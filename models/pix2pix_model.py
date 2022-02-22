@@ -31,7 +31,10 @@ class Pix2PixModel(BaseModel):
         # changing the default values to match the pix2pix paper (https://phillipi.github.io/pix2pix/)
         parser.set_defaults(norm='batch', netG='unet_256', dataset_mode='aligned')
         if is_train:
-            parser.set_defaults(pool_size=0, gan_mode='vanilla')
+            if parser.parse_known_args()[0].gan_mode == "wgangp":
+                parser.set_defaults(pool_size=0)
+            else:
+                parser.set_defaults(pool_size=0, gan_mode='vanilla')
             parser.add_argument('--lambda_L1', type=float, default=100.0, help='weight for L1 loss')
 
         return parser
@@ -65,10 +68,16 @@ class Pix2PixModel(BaseModel):
             self.criterionGAN = networks.GANLoss(opt.gan_mode).to(self.device)
             self.criterionL1 = torch.nn.L1Loss()
             # initialize optimizers; schedulers will be automatically created by function <BaseModel.setup>.
-            self.optimizer_G = torch.optim.Adam(self.netG.parameters(), lr=opt.lr, betas=(opt.beta1, 0.999))
-            self.optimizer_D = torch.optim.Adam(self.netD.parameters(), lr=opt.lr, betas=(opt.beta1, 0.999))
+            if opt.gan_mode == 'wgangp':
+                self.optimizer_G = torch.optim.RMSprop(self.netG.parameters(), lr=opt.lr)
+                self.optimizer_D = torch.optim.RMSprop(self.netD.parameters(), lr=opt.lr)
+            else:
+                self.optimizer_G = torch.optim.Adam(self.netG.parameters(), lr=opt.lr, betas=(opt.beta1, 0.999))
+                self.optimizer_D = torch.optim.Adam(self.netD.parameters(), lr=opt.lr, betas=(opt.beta1, 0.999))
             self.optimizers.append(self.optimizer_G)
             self.optimizers.append(self.optimizer_D)
+
+        self.opt = opt
 
     def set_input(self, input):
         """Unpack input data from the dataloader and perform necessary pre-processing steps.
@@ -120,8 +129,15 @@ class Pix2PixModel(BaseModel):
         self.optimizer_D.zero_grad()     # set D's gradients to zero
         self.backward_D()                # calculate gradients for D
         self.optimizer_D.step()          # update D's weights
+
+        # weight clipping of WGAN
+        if (self.opt.gan_mode == 'wgangp'):
+            for p in self.netD.parameters():
+                p.data.clamp_(-self.opt.clip_value, self.opt.clip_value)
+
         # update G
         self.set_requires_grad(self.netD, False)  # D requires no gradients when optimizing G
         self.optimizer_G.zero_grad()        # set G's gradients to zero
         self.backward_G()                   # calculate graidents for G
         self.optimizer_G.step()             # udpate G's weights
+
