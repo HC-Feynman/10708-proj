@@ -24,3 +24,5 @@
 ================ Training Loss (Wed Mar  9 11:27:30 2022) ================
 (epoch: 1, iters: 100, time: 1.189, data: 2.453) G_GAN: 0.010 G_L1: 4.149 D_real: 0.004 D_fake: -0.007 
 ================ Training Loss (Wed Mar  9 11:47:17 2022) ================
+================ Training Loss (Wed Mar  9 12:48:18 2022) ================
+(epoch: 1, iters: 100, time: 1.285, data: 3.871) G_GAN: 1.037 G_L1: 7.066 D_real: 0.728 D_fake: 0.657 
