@@ -83,5 +83,5 @@ def error(path_to_real, path_to_generate, binary, type):
 path_to_real = './2/'
 path_to_generate = './1/'
 binary = True
-type = 'L1' # or 'MMD'
+type = 'MMD' # or 'L1'
 error(path_to_real, path_to_generate, binary, type)
