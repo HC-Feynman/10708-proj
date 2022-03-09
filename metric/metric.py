@@ -48,13 +48,17 @@ def error(path_to_real, path_to_generate, binary, type):
     generate_files = os.listdir(path_to_generate)
     real_files = os.listdir(path_to_real)
 
+    real_files = [t for t in real_files if not t[0] == '.']
+
     assert len(real_files) == len(generate_files)
 
     real_list = []
     generate_list = []
     for i in range(len(real_files)):
-        img_real = Image.open(path_to_real+real_files[i]).convert('L')
-        img_generate = Image.open(path_to_generate+generate_files[i]).convert('L')
+        dreal = os.path.join(path_to_real, real_files[i])
+        dgene = os.path.join(path_to_generate, generate_files[i])
+        img_real = Image.open(dreal).convert('L')
+        img_generate = Image.open(dgene).convert('L')
         img_real = np.expand_dims(np.asarray(img_real),axis=0)
         img_generate = np.expand_dims(np.asarray(img_generate),axis=0)
 
@@ -80,8 +84,8 @@ def error(path_to_real, path_to_generate, binary, type):
     print(loss)
 
 
-path_to_real = './2/'
-path_to_generate = './1/'
-binary = True
-type = 'MMD' # or 'L1'
+path_to_real = '/Users/huichen/Desktop/10708/Project/实验结果/一对多downsample baseline Feb 17/test_latest/images/for-metric/real'
+path_to_generate = '/Users/huichen/Desktop/10708/Project/实验结果/一对多downsample baseline Feb 17/test_latest/images/for-metric/generated'
+binary = False
+type = "L1"#'MMD' # or 'L1'
 error(path_to_real, path_to_generate, binary, type)
