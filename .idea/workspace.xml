@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="5d43f8f0-9838-4175-a05a-0a1434260194" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/pix2pix_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/pix2pix_model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/checkpoints/oracle_pix2pix/loss_log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/checkpoints/oracle_pix2pix/loss_log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/checkpoints/oracle_pix2pix/train_opt.txt" beforeDir="false" afterPath="$PROJECT_DIR$/checkpoints/oracle_pix2pix/train_opt.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,19 +15,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models/__init__.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="638">
-              <caret line="23" selection-start-line="23" selection-end-line="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/models/pix2pix_model.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="293">
-              <caret line="37" column="69" selection-start-line="37" selection-start-column="69" selection-end-line="37" selection-end-column="69" />
+            <state relative-caret-position="390">
+              <caret line="39" selection-start-line="39" selection-end-line="39" />
               <folding>
                 <element signature="e#654#1227#1" />
               </folding>
@@ -37,8 +29,24 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/options/train_options.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
+            <state relative-caret-position="732">
               <caret line="33" column="210" selection-start-line="33" selection-start-column="210" selection-end-line="33" selection-end-column="210" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/train.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="841">
+              <caret line="44" selection-start-line="44" selection-end-line="44" />
+              <folding>
+                <element signature="e#1259#1270#0" expanded="true" />
+                <element signature="e#3446#3639#0" />
+                <element signature="e#3775#4114#0" />
+                <element signature="e#4251#4470#0" />
+                <element signature="e#4632#4794#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -157,11 +165,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/options/base_options.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2890">
-              <caret line="115" selection-start-line="115" selection-end-line="115" />
+            <state relative-caret-position="510">
+              <caret line="76" selection-start-line="76" selection-end-line="76" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -182,13 +190,13 @@
       <find>gan_</find>
       <find>gan_mode</find>
       <find>netD</find>
-      <find>wgangp</find>
       <find>optimizer_D</find>
       <find>optimizer</find>
       <find>vanilla</find>
       <find>pen</find>
       <find>wgan</find>
       <find>lambda_L1</find>
+      <find>wgangp</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -219,29 +227,6 @@
             <path>
               <item name="i2i-zhu" type="b2602c69:ProjectViewProjectNode" />
               <item name="i2i-zhu" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="i2i-zhu" type="b2602c69:ProjectViewProjectNode" />
-              <item name="i2i-zhu" type="462c0819:PsiDirectoryNode" />
-              <item name="checkpoints" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="i2i-zhu" type="b2602c69:ProjectViewProjectNode" />
-              <item name="i2i-zhu" type="462c0819:PsiDirectoryNode" />
-              <item name="checkpoints" type="462c0819:PsiDirectoryNode" />
-              <item name="oracle_pix2pix" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="i2i-zhu" type="b2602c69:ProjectViewProjectNode" />
-              <item name="i2i-zhu" type="462c0819:PsiDirectoryNode" />
-              <item name="checkpoints" type="462c0819:PsiDirectoryNode" />
-              <item name="oracle_pix2pix" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="i2i-zhu" type="b2602c69:ProjectViewProjectNode" />
-              <item name="i2i-zhu" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="i2i-zhu" type="b2602c69:ProjectViewProjectNode" />
@@ -289,7 +274,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/train.py" />
-      <option name="PARAMETERS" value="--dataroot ./datasets/oracle-6h-6h --name oracle_pix2pix --model pix2pix --direction BtoA --display_id 0 --batch_size 20 --print_freq 100 --gpu_ids -1   --input_nc 1 --output_nc 1  --load_size 256 --crop_size 256 --gan_mode wgangp" />
+      <option name="PARAMETERS" value="--dataroot ./datasets/oracle-6h-6h --name oracle_pix2pix --model pix2pix --direction BtoA --display_id 0 --batch_size 20 --print_freq 100 --gpu_ids -1   --input_nc 1 --output_nc 1  --load_size 256 --crop_size 256" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -318,7 +303,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1080" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15113218" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -326,12 +310,12 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32876712" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.3" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.26849315" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.0970297" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.2089109" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.2089109" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Python Console" order="10" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -349,8 +333,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/models/pix2pix_model.py</url>
+          <line>70</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/models/pix2pix_model.py</url>
           <line>32</line>
-          <option name="timeStamp" value="11" />
+          <option name="timeStamp" value="13" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -358,37 +347,17 @@
   <component name="debuggerHistoryManager">
     <expressions id="evaluateExpression">
       <expression>
-        <expression-string>parser.parse_known_args()[0].gan_mode</expression-string>
+        <expression-string>data['A'].unique()</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>parser.parse_known_args().gan_mode</expression-string>
+        <expression-string>data['A'].bincount()</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>parser.parse_known_args()</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>p</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>parser.parse_known_agan_mod</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>self.netD</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>data['A'].shape</expression-string>
+        <expression-string>data['A'].type()</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -398,12 +367,27 @@
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>data</expression-string>
+        <expression-string>bincount(data['A'])</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>data.size()</expression-string>
+        <expression-string>torch.bincount(data['A'])</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>((data['A']==-1).sum() + (data['A']==1).sum())/256</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>((data['A']==-1).sum() + (data['A']==1).sum())</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>data['A'].shape</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -452,19 +436,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
           <caret line="64" column="8" selection-start-line="64" selection-start-column="8" selection-end-line="64" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/train.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="17" column="18" selection-start-line="17" selection-start-column="18" selection-end-line="17" selection-end-column="18" />
-          <folding>
-            <element signature="e#3446#3639#0" />
-            <element signature="e#3775#4114#0" />
-            <element signature="e#4251#4470#0" />
-            <element signature="e#4632#4794#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -586,27 +557,41 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/options/train_options.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
+        <state relative-caret-position="732">
           <caret line="33" column="210" selection-start-line="33" selection-start-column="210" selection-end-line="33" selection-end-column="210" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/options/base_options.py">
+    <entry file="file://$PROJECT_DIR$/train.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2890">
-          <caret line="115" selection-start-line="115" selection-end-line="115" />
+        <state relative-caret-position="841">
+          <caret line="44" selection-start-line="44" selection-end-line="44" />
           <folding>
-            <element signature="e#0#15#0" expanded="true" />
+            <element signature="e#1259#1270#0" expanded="true" />
+            <element signature="e#3446#3639#0" />
+            <element signature="e#3775#4114#0" />
+            <element signature="e#4251#4470#0" />
+            <element signature="e#4632#4794#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/models/pix2pix_model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
-          <caret line="37" column="69" selection-start-line="37" selection-start-column="69" selection-end-line="37" selection-end-column="69" />
+        <state relative-caret-position="390">
+          <caret line="39" selection-start-line="39" selection-end-line="39" />
           <folding>
             <element signature="e#654#1227#1" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/options/base_options.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="76" selection-start-line="76" selection-end-line="76" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
           </folding>
         </state>
       </provider>

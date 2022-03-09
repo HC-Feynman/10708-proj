@@ -23,7 +23,7 @@
                 init_type: normal                        
                  input_nc: 1                             	[default: 3]
                   isTrain: True                          	[default: None]
-                lambda_L1: 100.0                         
+                lambda_L1: 10.0                          
                 load_iter: 0                             	[default: 0]
                 load_size: 256                           	[default: 286]
                        lr: 0.0002                        
