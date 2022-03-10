@@ -3,7 +3,7 @@ import torch.nn as nn
 import os
 from PIL import Image
 import numpy as np
-
+device = 'cuda' if torch.cuda.is_available() else 'cpu'
 # Modify from https://github.com/ZongxianLee/MMD_Loss.Pytorch
 class MMD_loss(nn.Module):
     def __init__(self, kernel_mul = 2.0, kernel_num = 5):
@@ -59,8 +59,8 @@ def error(path_to_real, path_to_generate, binary, type):
         dgene = os.path.join(path_to_generate, generate_files[i])
         img_real = Image.open(dreal).convert('L')
         img_generate = Image.open(dgene).convert('L')
-        img_real = np.expand_dims(np.asarray(img_real),axis=0)
-        img_generate = np.expand_dims(np.asarray(img_generate),axis=0)
+        img_real = np.expand_dims(np.asarray(img_real)[:,:70],axis=0)
+        img_generate = np.expand_dims(np.asarray(img_generate)[:,:70],axis=0)
 
         if binary == True:
             img_real = binary_data(img_real)
@@ -72,13 +72,13 @@ def error(path_to_real, path_to_generate, binary, type):
 
     if type == 'MMD':
         mmd = MMD_loss()
-        img_real = torch.Tensor(img_real)
-        img_generate = torch.Tensor(img_generate)
+        img_real = torch.Tensor(img_real).to(device)
+        img_generate = torch.Tensor(img_generate).to(device)
         loss = mmd.forward(img_real, img_generate)
     elif type == 'L1':
         loss = 0
         for i in range(len(real_list)):
-            loss += np.linalg.norm(real_list[i].reshape(-1) - generate_list[i].reshape(-1), ord=1, keepdims=True)
+            loss += np.linalg.norm(real_list[i].reshape(-1) - generate_list[i].reshape(-1), ord=1)
         loss = loss/len(real_list)
 
     print(loss)
@@ -86,6 +86,6 @@ def error(path_to_real, path_to_generate, binary, type):
 
 path_to_real = '/Users/huichen/Desktop/10708/Project/实验结果/一对多downsample baseline Feb 17/test_latest/images/for-metric/real'
 path_to_generate = '/Users/huichen/Desktop/10708/Project/实验结果/一对多downsample baseline Feb 17/test_latest/images/for-metric/generated'
-binary = False
+binary = True
 type = "L1"#'MMD' # or 'L1'
 error(path_to_real, path_to_generate, binary, type)

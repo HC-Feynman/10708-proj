@@ -24,8 +24,6 @@ Modify the path to real dataset and generated dataset.
 
 Specify 'L1' or 'MMD'.
 
-Specify 'binary'. For RBM, since the generated images are binary, we set binary as True. For GAN, we may set it as False.
-
 Corresponding images (a pair of real one and generated one) should have the same names but in different directory.
 
 Lastly, just run the code.
