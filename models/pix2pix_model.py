@@ -119,11 +119,11 @@ class Pix2PixModel(BaseModel):
         # Second, G(A) = B
         self.loss_G_L1 = self.criterionL1(self.fake_B, self.real_B) * self.opt.lambda_L1
 
-        self.loss_G_reg = self.fake_B.sum()
-        g_reg_weight = 3e-6
+        # self.loss_G_reg = self.fake_B.sum()
+        # g_reg_weight = 3e-6
 
         # combine loss and calculate gradients
-        self.loss_G = self.loss_G_GAN + self.loss_G_L1 + g_reg_weight * self.loss_G_reg
+        self.loss_G = self.loss_G_GAN + self.loss_G_L1
 
 
 
