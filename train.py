@@ -25,10 +25,23 @@ from models import create_model
 from util.visualizer import Visualizer
 
 if __name__ == '__main__':
+
+
     opt = TrainOptions().parse()   # get training options
     dataset = create_dataset(opt)  # create a dataset given opt.dataset_mode and other options
     dataset_size = len(dataset)    # get the number of images in the dataset.
     print('The number of training images = %d' % dataset_size)
+
+    # added by Hui for semi-supervised learning
+    if opt.semi_sup:
+        unlabeled_data_path = "./datasets/modern-2k"
+        dataroot_copy = opt.dataroot
+        opt.dataroot = unlabeled_data_path
+        unlabeled_dataset = create_dataset(opt)
+        opt.dataroot = dataroot_copy
+        print("The number of unlabeled training images = %d" % len(unlabeled_dataset))
+        unlabeled_iter = iter(unlabeled_dataset)    # iterator for unlabeled dataset
+
 
     model = create_model(opt)      # create a model given opt.model and other options
     model.setup(opt)               # regular setup: load and print networks; create schedulers
@@ -42,13 +55,24 @@ if __name__ == '__main__':
         visualizer.reset()              # reset the visualizer: make sure it saves the results to HTML at least once every epoch
         model.update_learning_rate()    # update learning rates in the beginning of every epoch.
         for i, data in enumerate(dataset):  # inner loop within one epoch
+
+            if opt.semi_sup:
+                # load the unlabeled data
+                u_data = next(unlabeled_iter, None)
+                if u_data is None:
+                    unlabeled_iter = iter(unlabeled_dataset)
+                    u_data = next(unlabeled_iter)
+
             iter_start_time = time.time()  # timer for computation per iteration
             if total_iters % opt.print_freq == 0:
                 t_data = iter_start_time - iter_data_time
 
             total_iters += opt.batch_size
             epoch_iter += opt.batch_size
-            model.set_input(data)         # unpack data from dataset and apply preprocessing
+            if opt.semi_sup:
+                model.set_input((data, u_data))
+            else:
+                model.set_input(data)         # unpack data from dataset and apply preprocessing
             model.optimize_parameters()   # calculate loss functions, get gradients, update network weights
 
             if total_iters % opt.display_freq == 0:   # display images on visdom and save images to a HTML file

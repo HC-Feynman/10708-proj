@@ -1,6 +1,7 @@
 import torch
 from .base_model import BaseModel
 from . import networks
+from data.tcr import TCR
 
 
 class Pix2PixModel(BaseModel):
@@ -79,6 +80,8 @@ class Pix2PixModel(BaseModel):
 
         self.opt = opt
 
+        self.tcr = TCR()
+
     def set_input(self, input):
         """Unpack input data from the dataloader and perform necessary pre-processing steps.
 
@@ -87,14 +90,35 @@ class Pix2PixModel(BaseModel):
 
         The option 'direction' can be used to swap images in domain A and domain B.
         """
+
         AtoB = self.opt.direction == 'AtoB'
-        self.real_A = input['A' if AtoB else 'B'].to(self.device)
-        self.real_B = input['B' if AtoB else 'A'].to(self.device)
-        self.image_paths = input['A_paths' if AtoB else 'B_paths']
+
+        if self.opt.semi_sup:
+            # semi-supervised
+            l_input, u_input = input
+            self.real_A = l_input['A' if AtoB else 'B'].to(self.device)
+            self.real_B = l_input['B' if AtoB else 'A'].to(self.device)
+            self.image_paths = l_input['A_paths' if AtoB else 'B_paths']
+
+            if AtoB:
+                assert False, "not implemented"
+            else:
+                self.u_A = u_input['B'].to(self.device)
+                self.random = torch.rand(len(self.u_A))
+                self.u_A_tr = self.tcr(self.u_A, self.random)
+        else:
+            self.real_A = input['A' if AtoB else 'B'].to(self.device)
+            self.real_B = input['B' if AtoB else 'A'].to(self.device)
+            self.image_paths = input['A_paths' if AtoB else 'B_paths']
 
     def forward(self):
         """Run forward pass; called by both functions <optimize_parameters> and <test>."""
         self.fake_B = self.netG(self.real_A)  # G(A)
+
+        if self.opt.semi_sup:
+            self.u_B = self.netG(self.u_A)
+            self.u_B_tr = self.netG(self.u_A_tr)
+            self.u_B_tr_ = self.tcr(self.u_B, self.random)
 
     def backward_D(self):
         """Calculate GAN loss for the discriminator"""
@@ -119,13 +143,12 @@ class Pix2PixModel(BaseModel):
         # Second, G(A) = B
         self.loss_G_L1 = self.criterionL1(self.fake_B, self.real_B) * self.opt.lambda_L1
 
-        # self.loss_G_reg = self.fake_B.sum()
-        # g_reg_weight = 3e-6
-
         # combine loss and calculate gradients
         self.loss_G = self.loss_G_GAN + self.loss_G_L1
 
-
+        if self.opt.semi_sup:
+            self.loss_semi_sup = self.criterionL1(self.u_B_tr, self.u_B_tr_) * self.opt.semi_sup_weight
+            self.loss_G += self.loss_semi_sup
 
         self.loss_G.backward()
 
