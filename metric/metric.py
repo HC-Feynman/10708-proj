@@ -84,8 +84,8 @@ def error(path_to_real, path_to_generate, binary, type):
     print(loss)
 
 
-path_to_real = '/Users/huichen/Desktop/10708/Project/experi-res/reg-march-10/test_latest/images/for-metric/generated'
-path_to_generate = '/Users/huichen/Desktop/10708/Project/experi-res/reg-march-10/test_latest/images/for-metric/real'
+path_to_real = '/Users/huichen/fsdownload/test_latest/images/for-metric/real'
+path_to_generate = '/Users/huichen/fsdownload/test_latest/images/for-metric/generated'
 binary = True
-type = "MMD"#'MMD' # or 'L1'
+type = "L1"#'MMD' # or 'L1'
 error(path_to_real, path_to_generate, binary, type)

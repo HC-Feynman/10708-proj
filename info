@@ -18,7 +18,7 @@ python train.py --dataroot ./datasets/facades --name facades_pix2pix --model pix
 
 Oracle:
 
-python train.py --dataroot ./datasets/oracle-6h-4k --name oracle_pix2pix --model pix2pix --input_nc 1 --output_nc 1 --direction BtoA --display_id 0 --batch_size 100 --print_freq 1000  --save_latest_freq 10000  --n_epochs  100   --n_epochs_decay  100 --gan_mode wgangp  >  log.out
+python train.py --dataroot ./datasets/oracle-6h-4k --name oracle_pix2pix --model pix2pix --input_nc 1 --output_nc 1 --direction BtoA --display_id 0 --batch_size 70 --print_freq 700  --save_latest_freq 14000  --n_epochs  80   --n_epochs_decay  80 --semi_sup 1 > log.out
 
 python test.py --dataroot ./datasets/oracle-6h-4k --name oracle_pix2pix --model pix2pix --direction BtoA --input_nc 1 --output_nc 1 --num_test 246
 

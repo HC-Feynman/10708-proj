@@ -95,7 +95,7 @@ class Pix2PixModel(BaseModel):
 
         AtoB = self.opt.direction == 'AtoB'
 
-        if self.opt.semi_sup:
+        if self.opt.semi_sup and self.isTrain:
             # semi-supervised
             l_input, u_input = input
             self.real_A = l_input['A' if AtoB else 'B'].to(self.device)
@@ -117,7 +117,7 @@ class Pix2PixModel(BaseModel):
         """Run forward pass; called by both functions <optimize_parameters> and <test>."""
         self.fake_B = self.netG(self.real_A)  # G(A)
 
-        if self.opt.semi_sup:
+        if self.opt.semi_sup and self.isTrain:
             self.u_B = self.netG(self.u_A)
             self.u_B_tr = self.netG(self.u_A_tr)
             self.u_B_tr_ = self.tcr(self.u_B, self.random)

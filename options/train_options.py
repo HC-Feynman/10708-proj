@@ -52,7 +52,7 @@ class TrainOptions(BaseOptions):
 
         parser.add_argument('--clip_value', type=float, default=0.01, help='weight clipping threshold for wgangp')
 
-        parser.add_argument('--semi_sup', type=int, default=0, choices=[0, 1], help='whether to use semi-supervised')
+
         parser.add_argument('--semi_sup_weight', type=float, default=1.0, help="weight of the semi-supervised loss")
 
         self.isTrain = True
