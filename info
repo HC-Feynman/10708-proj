@@ -20,7 +20,7 @@ Oracle:
 
 python train.py --dataroot ./datasets/oracle-6h-4k --name oracle_pix2pix --model pix2pix --input_nc 1 --output_nc 1 --direction BtoA --display_id 0 --batch_size 70 --print_freq 700  --save_latest_freq 14000  --n_epochs  80   --n_epochs_decay  80 --semi_sup 1 > log.out
 
-python test.py --dataroot ./datasets/oracle-6h-4k --name oracle_pix2pix --model pix2pix --direction BtoA --input_nc 1 --output_nc 1 --num_test 246
+python test.py --dataroot ./datasets/oracle-6h-4k --name oracle_pix2pix --model pix2pix --direction BtoA --input_nc 1 --output_nc 1 --num_test 246 --semi_sup 1
 
 on laptop:
 
