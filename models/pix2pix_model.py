@@ -52,7 +52,7 @@ class Pix2PixModel(BaseModel):
         self.visual_names = ['real_A', 'fake_B', 'real_B']
         # specify the models you want to save to the disk. The training/test scripts will call <BaseModel.save_networks> and <BaseModel.load_networks>
         if self.isTrain:
-            self.model_names = ['G', 'D']
+            self.model_names = ['D', 'G']
         else:  # during test time, only load G
             self.model_names = ['G']
         # define networks (both generator and discriminator)
@@ -94,7 +94,9 @@ class Pix2PixModel(BaseModel):
 
     def forward(self):
         """Run forward pass; called by both functions <optimize_parameters> and <test>."""
+
         self.fake_B = self.netG(self.real_A)  # G(A)
+        # print(self.real_A.shape, self.fake_B.shape) # [100, 1, 256, 256] [100, 1, 256, 256]
 
     def backward_D(self):
         """Calculate GAN loss for the discriminator"""
@@ -105,6 +107,7 @@ class Pix2PixModel(BaseModel):
         # Real
         real_AB = torch.cat((self.real_A, self.real_B), 1)
         pred_real = self.netD(real_AB)
+        # print(real_AB.shape, pred_real.shape)
         self.loss_D_real = self.criterionGAN(pred_real, True)
         # combine loss and calculate gradients
         self.loss_D = (self.loss_D_fake + self.loss_D_real) * 0.5
