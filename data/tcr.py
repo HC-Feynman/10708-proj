@@ -22,12 +22,12 @@ class TCR(nn.Module):
     def __init__(self):
         super(TCR, self).__init__()
 
-        self.ang = np.deg2rad(7.0)  # 20 # Change the degree of rotation as per the task in hand
+        self.ang = np.deg2rad(3.0)  # 20 # Change the degree of rotation as per the task in hand
         self.ang_neg = -1 * self.ang
-        self.max_tx, self.max_ty = 1.5, 1.5  # 6.0, 6.0  # Change as per the task
-        self.min_tx, self.min_ty =  -1.5, -1.5 # -6.0, -6.0  # Change as per the task
+        self.max_tx, self.max_ty = 3, 3  # 6.0, 6.0  # Change as per the task
+        self.min_tx, self.min_ty =  -3, -3 # -6.0, -6.0  # Change as per the task
 
-        self.max_z, self.min_z = 0.3, 0.3 # 1.00, 1.00  # Change as per the task
+        self.max_z, self.min_z = 1, 1 # 1.00, 1.00  # Change as per the task
 
     #
 
