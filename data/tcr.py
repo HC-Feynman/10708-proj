@@ -22,7 +22,7 @@ class TCR(nn.Module):
     def __init__(self):
         super(TCR, self).__init__()
 
-        angp = 30
+        angp = 5
         tp = 2
         zp = 0.5
 
