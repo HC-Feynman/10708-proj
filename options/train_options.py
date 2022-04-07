@@ -36,7 +36,11 @@ class TrainOptions(BaseOptions):
         parser.add_argument('--lr_policy', type=str, default='linear', help='learning rate policy. [linear | step | plateau | cosine]')
         parser.add_argument('--lr_decay_iters', type=int, default=50, help='multiply by a gamma every lr_decay_iters iterations')
 
-        parser.add_argument('--clip_value', type=float, default=0.01, help='weight clipping threshold for wgangp')
+        parser.add_argument('--clip_value', type=float, default=0.05, help='weight clipping threshold for wgangp')
 
+        # for vae
+        parser.add_argument('--l2_weight', type=float, default=0.00, help='l2 norm for parameters')
+        parser.add_argument('--l1_weight', type=float, default=10.0, help='the weight of l1 loss for vae pretraining')
+        parser.add_argument('--kl_weight', type=float, default=0.0001, help='the weight of kl loss for vae pretraining')
         self.isTrain = True
         return parser

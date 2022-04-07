@@ -79,7 +79,7 @@ class vaeModel(BaseModel):
                                            {'params': self.net_to_var.parameters()},
                                            {'params': self.net_upscale.parameters()},
                                            {'params': self.netG.parameters()}
-                                           ], lr = opt.lr, betas=(opt.beta1, 0.999))
+                                           ], lr = opt.lr, betas=(opt.beta1, 0.999), weight_decay = opt.l2_weight)
         self.optimizers.append(self.optimizer)
         self.opt = opt
 
@@ -118,8 +118,8 @@ class vaeModel(BaseModel):
 
     def backward(self):
 
-        self.loss_kl = (-0.5 * torch.sum(1 + self.var - self.mu.pow(2) - self.var.exp()) ) * 0.0001
-        self.loss_G_L1 = self.criterionL1(self.fake_B, self.real_B) * 10
+        self.loss_kl = (-0.5 * torch.sum(1 + self.var - self.mu.pow(2) - self.var.exp()) ) * self.opt.kl_weight
+        self.loss_G_L1 = self.criterionL1(self.fake_B, self.real_B) * self.opt.l1_weight
         self.loss_G = self.loss_G_L1 + self.loss_kl
 
         self.loss_G.backward()
