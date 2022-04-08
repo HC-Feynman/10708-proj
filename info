@@ -26,3 +26,11 @@ on laptop:
 
 python train.py --dataroot ./datasets/oracle-6h-6h --name oracle_pix2pix --model pix2pix --direction BtoA --display_id 0 --batch_size 20 --print_freq 100 --gpu_ids -1   --input_nc 1 --output_nc 1
 
+
+
+
+python train.py --dataroot ./datasets/oracle-6h-4k --name new_model_name --model pix2pix --input_nc 1 --output_nc 1 --direction BtoA --display_id 0 --batch_size 100 --print_freq 1000  --save_latest_freq 800  --n_epochs  0   --n_epochs_decay  0
+
+python train.py --dataroot ./datasets/oracle-6h-4k --name new_model_name --model pix2pix --input_nc 1 --output_nc 1 --direction BtoA --display_id 0 --batch_size 70 --print_freq 700  --save_latest_freq 14000  --n_epochs  100   --n_epochs_decay  0 --semi_sup 1 --continue_train  > log.out
+
+python test.py --dataroot ./datasets/oracle-6h-4k --name new_model_name --model pix2pix --direction BtoA --input_nc 1 --output_nc 1 --num_test 246 --semi_sup 1
