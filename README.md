@@ -4,7 +4,7 @@ Generation Using Image-to-Image Translation" by Hui Chen, Zhihan Lu, Jiaqi Zeng.
 
 ## Experimental results
 
-![1650503359150](C:\Users\User\AppData\Roaming\Typora\typora-user-images\1650503359150.png)
+![1650503359150](./imgs/res.png)
 
 ## How to run the code
 
